@@ -14,12 +14,17 @@ class ProductViewController: UIViewController {
     @IBOutlet weak var productImageView: UIImageView!
     @IBOutlet weak var addtoCartButton: UIButton!
     
-    var productName: String?
+    var product: Product?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        productNameLabel.text = productName
-        productImageView.image = #imageLiteral(resourceName: "1937-Ford-Coupe")
+        
+        if let p = product {
+            productNameLabel.text = p.name
+            if let i = p.productImage {
+                productImageView.image = UIImage(named: i)
+            }
+        }
         addtoCartButton.setImage(#imageLiteral(resourceName: "button-add"), for: UIControlState.normal)
         // Do any additional setup after loading the view.
     }
